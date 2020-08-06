@@ -1,0 +1,283 @@
+  [1m[35m (143.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "jakob_wildlife_tracker_test"[0m
+  [1m[35m (454.7ms)[0m  [1m[35mCREATE DATABASE "jakob_wildlife_tracker_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "animals" CASCADE[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "animals" ("id" bigserial primary key, "common_name" character varying, "latin_name" character varying, "kingdom" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "sightings" CASCADE[0m
+  [1m[35m (30.7ms)[0m  [1m[35mCREATE TABLE "sightings" ("id" bigserial primary key, "latitude" character varying, "longitude" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date" timestamp, "animal_id" integer)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (46.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200805222730)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200805181207),
+(20200805211521),
+(20200805214545),
+(20200805220336);
+
+[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-08-06 20:31:53.447613"], ["updated_at", "2020-08-06 20:31:53.447613"]]
+  [1m[35m (27.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "e54c25d13c17552dda90c67aaa848988eb252399"], ["created_at", "2020-08-06 20:31:53.480174"], ["updated_at", "2020-08-06 20:31:53.480174"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (11.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (23.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (16.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Brown Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (2.3ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Brown Bear"], ["latin_name", "Bearus Maximus"], ["created_at", "2020-08-06 21:28:14.285616"], ["updated_at", "2020-08-06 21:28:14.285616"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (17.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.4ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Brown Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.8ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Brown Bear"], ["latin_name", "Bearus Maximus"], ["created_at", "2020-08-06 21:32:25.896260"], ["updated_at", "2020-08-06 21:32:25.896260"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (12.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.5ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "Brown Bear"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "Bearus Maximus"], ["id", 2], ["LIMIT", 1]]
+  [1m[35m (11.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (26.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Brown Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (1.2ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Brown Bear"], ["latin_name", "Bearus Maximus"], ["created_at", "2020-08-06 21:35:21.780060"], ["updated_at", "2020-08-06 21:35:21.780060"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (25.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.4ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSighting Create (2.7ms)[0m  [1m[32mINSERT INTO "sightings" ("latitude", "longitude", "created_at", "updated_at", "date", "animal_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["latitude", "test_latitude"], ["longitude", "test_longitude"], ["created_at", "2020-08-06 21:35:21.829610"], ["updated_at", "2020-08-06 21:35:21.829610"], ["date", "2020-09-15 00:00:00"], ["animal_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (20.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Brown Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.6ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Brown Bear"], ["latin_name", "Bearus Maximus"], ["created_at", "2020-08-06 21:45:01.859243"], ["updated_at", "2020-08-06 21:45:01.859243"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.3ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSighting Create (0.4ms)[0m  [1m[32mINSERT INTO "sightings" ("latitude", "longitude", "created_at", "updated_at", "date", "animal_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["latitude", "test_latitude"], ["longitude", "test_longitude"], ["created_at", "2020-08-06 21:45:01.877785"], ["updated_at", "2020-08-06 21:45:01.877785"], ["date", "2020-09-15 00:00:00"], ["animal_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (18.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Blck Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus Aurelius"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.7ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Blck Bear"], ["latin_name", "Bearus Maximus Aurelius"], ["created_at", "2020-08-06 21:45:01.910601"], ["updated_at", "2020-08-06 21:45:01.910601"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.2ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Brown Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.6ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Brown Bear"], ["latin_name", "Bearus Maximus"], ["created_at", "2020-08-06 21:47:39.458709"], ["updated_at", "2020-08-06 21:47:39.458709"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.2ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mSighting Create (1.2ms)[0m  [1m[32mINSERT INTO "sightings" ("latitude", "longitude", "created_at", "updated_at", "date", "animal_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["latitude", "test_latitude"], ["longitude", "test_longitude"], ["created_at", "2020-08-06 21:47:39.477165"], ["updated_at", "2020-08-06 21:47:39.477165"], ["date", "2020-09-15 00:00:00"], ["animal_id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (17.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Blck Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus Aurelius"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.4ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Blck Bear"], ["latin_name", "Bearus Maximus Aurelius"], ["created_at", "2020-08-06 21:47:39.510695"], ["updated_at", "2020-08-06 21:47:39.510695"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.2ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Black Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus Aurlius"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.7ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Black Bear"], ["latin_name", "Bearus Maximus Aurlius"], ["created_at", "2020-08-06 21:47:39.522034"], ["updated_at", "2020-08-06 21:47:39.522034"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.2ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Brown Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.5ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Brown Bear"], ["latin_name", "Bearus Maximus"], ["created_at", "2020-08-06 21:51:41.925335"], ["updated_at", "2020-08-06 21:51:41.925335"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (17.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.3ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mSighting Create (0.6ms)[0m  [1m[32mINSERT INTO "sightings" ("latitude", "longitude", "created_at", "updated_at", "date", "animal_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["latitude", "test_latitude"], ["longitude", "test_longitude"], ["created_at", "2020-08-06 21:51:41.960294"], ["updated_at", "2020-08-06 21:51:41.960294"], ["date", "2020-09-15 00:00:00"], ["animal_id", 9]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Blck Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus Aurelius"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.3ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Blck Bear"], ["latin_name", "Bearus Maximus Aurelius"], ["created_at", "2020-08-06 21:51:41.979689"], ["updated_at", "2020-08-06 21:51:41.979689"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.2ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (24.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Black Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearus Maximus Aurlius"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.4ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Black Bear"], ["latin_name", "Bearus Maximus Aurlius"], ["created_at", "2020-08-06 21:51:42.013928"], ["updated_at", "2020-08-06 21:51:42.013928"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.3ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "Bleack Bear"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "Bearuse Maximus Aurlius"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.3ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "Bleack Bear"], ["latin_name", "Bearuse Maximus Aurlius"], ["created_at", "2020-08-06 21:51:42.024007"], ["updated_at", "2020-08-06 21:51:42.024007"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Load (0.2ms)[0m  [1m[34mSELECT "animals".* FROM "animals" WHERE "animals"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.7ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["created_at", "2020-08-06 22:10:27.414153"], ["updated_at", "2020-08-06 22:10:27.414153"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 13], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 13], ["LIMIT", 1]]
+  [1m[35m (18.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.5ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["created_at", "2020-08-06 22:10:46.715389"], ["updated_at", "2020-08-06 22:10:46.715389"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 14], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 14], ["LIMIT", 1]]
+  [1m[35m (18.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (1.2ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["created_at", "2020-08-06 22:11:30.811201"], ["updated_at", "2020-08-06 22:11:30.811201"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 15], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 15], ["LIMIT", 1]]
+  [1m[35m (19.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.6ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "kingdom", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["kingdom", "Animal"], ["created_at", "2020-08-06 22:11:30.853565"], ["updated_at", "2020-08-06 22:11:30.853565"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 16], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.9ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (1.1ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["created_at", "2020-08-06 22:12:18.800366"], ["updated_at", "2020-08-06 22:12:18.800366"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 17], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 17], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.2ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "kingdom", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["kingdom", "Animal"], ["created_at", "2020-08-06 22:12:18.818562"], ["updated_at", "2020-08-06 22:12:18.818562"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 18], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (26.0ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 18], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animalalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.5ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "kingdom", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["common_name", "test_animalalus"], ["latin_name", "test_animalus"], ["kingdom", "Animal"], ["created_at", "2020-08-06 22:12:18.854685"], ["updated_at", "2020-08-06 22:12:18.854685"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animalalus"], ["id", 19], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 19], ["LIMIT", 1]]
+  [1m[35m (17.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.6ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["created_at", "2020-08-06 22:13:10.246849"], ["updated_at", "2020-08-06 22:13:10.246849"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 20], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 20], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animal"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Create (0.3ms)[0m  [1m[32mINSERT INTO "animals" ("common_name", "latin_name", "kingdom", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["common_name", "test_animal"], ["latin_name", "test_animalus"], ["kingdom", "Animal"], ["created_at", "2020-08-06 22:13:10.263685"], ["updated_at", "2020-08-06 22:13:10.263685"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["common_name", "test_animal"], ["id", 21], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 AND "animals"."id" != $2 LIMIT $3[0m  [["latin_name", "test_animalus"], ["id", 21], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mAnimal Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."common_name" = $1 LIMIT $2[0m  [["common_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[36mAnimal Exists? (24.8ms)[0m  [1m[34mSELECT 1 AS one FROM "animals" WHERE "animals"."latin_name" = $1 LIMIT $2[0m  [["latin_name", "test_animalus"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
